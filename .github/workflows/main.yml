@@ -1,0 +1,25 @@
+name: Pruebas
+
+on:
+  push:
+    branches:
+      - main
+      - dev
+
+jobs:
+  pruebas:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Configurar Node.js
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14'
+
+    - name: Instalar Dependencias
+      run: npm install
+
+    - name: Ejecutar Pruebas
+      run: npm test
